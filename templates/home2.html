@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>
+   A CODE SHARING  
+    </title>
+    <style>
+      .topcorner{
+position: fixed;
+right: 0;
+top: 0;}
+    </style>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    </head>
+   
+    <body>
+        
+   <center><h1>shring A code sharing service </h1><br></center>
+         <a class="topcorner" href="{% url 'home'%}">store data</a>
+    <center>
+    1)share your code with the keys.<br>
+    2)enter key and code.<br>
+    3)retrive your data with unique key.</center>
+    <form method="post" action="{% url 'try'%}">
+    {% csrf_token %}
+        <center>
+    <h1> enter your key</h1><input type="text" name="txt2" value="{{vall}}" />
+     <input type="submit" name=sub2 value=getdata>
+            </center>
+</form>
+    
+    <pre>
+    <code>
+    {{result2}}
+    </code>
+    </pre>
+</body>
+
+</html>

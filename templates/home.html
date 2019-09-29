@@ -1,0 +1,74 @@
+<html>
+    <head>
+      <style>  
+        textarea {
+    border: 0 none white;
+    overflow: hidden;
+    padding: 0;
+    outline: none;
+    background-color: #D0D0D0;
+          }
+            
+            .topcorner{
+position: fixed;
+right: 0;
+top: 0;}
+          </style>
+    
+<title>A CODE SHARING</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </head>
+    <body onload="init();">
+        
+       <center><h1>shring A code sharing service </h1><br></center>
+        <center>
+    1)share your code with the keys.<br>
+    2)enter key and code.<br>
+    3)retrive your data with unique key.</center>
+        
+         <a class="topcorner" href="{% url 'home2'%}">view data</a>
+    <script>var observe;
+if (window.attachEvent) {
+    observe = function (element, event, handler) {
+        element.attachEvent('on'+event, handler);
+    };
+}
+else {
+    observe = function (element, event, handler) {
+        element.addEventListener(event, handler, false);
+    };
+}
+function init () {
+    var text = document.getElementById('text');
+    function resize () {
+        text.style.height = 'auto';
+        text.style.height = text.scrollHeight+'px';
+    }
+    /* 0-timeout to get the already changed text */
+    function delayedResize () {
+        window.setTimeout(resize, 0);
+    }
+    observe(text, 'change',  resize);
+    observe(text, 'cut',     delayedResize);
+    observe(text, 'paste',   delayedResize);
+    observe(text, 'drop',    delayedResize);
+    observe(text, 'keydown', delayedResize);
+
+    text.focus();
+    text.select();
+    resize();
+}
+</script>
+<form method="post" action="{% url 'insert'%}">
+<center>
+    {% csrf_token %}
+    Enter your key:   <input type="text" name="txt1" /><br>
+    <br>
+  <textarea name="txtarea" rows="20" style="height:1em;" cols="100" id="text"></textarea>
+   <input type="submit" name=sub1 value=save>
+    </center>
+    
+</form>
+</body>
+</html>
